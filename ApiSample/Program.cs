@@ -34,7 +34,7 @@ namespace ApiSample
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("This is an API Sample Program for Hotcakes");
+            Console.WriteLine("This is a list of products.");
             Console.WriteLine();
 
             var url = string.Empty;
@@ -58,13 +58,13 @@ namespace ApiSample
             if (snaps.Content != null)
             {
                 Console.WriteLine("Found " + snaps.Content.Count + " products");
-                Console.WriteLine("-- First 5 --");
-                for (var i = 0; i < 5; i++)
+                Console.WriteLine("-- Products --");
+                for (var i = 0; i < snaps.Content.Count; i++)
                 {
                     if (i < snaps.Content.Count)
                     {
-                        Console.WriteLine(i + ") " + snaps.Content[i].ProductName + " [" + snaps.Content[i].Bvin + "]");
-                        var cat = proxy.ProductsFind(snaps.Content[i].Bvin);
+                        Console.WriteLine(i + ") " + snaps.Content[i].ProductName + "| bvin: [" + snaps.Content[i].Bvin + "]");
+                        /*var cat = proxy.ProductsFind(snaps.Content[i].Bvin);
                         if (cat.Errors.Count > 0)
                         {
                             foreach (var err in cat.Errors)
@@ -75,7 +75,7 @@ namespace ApiSample
                         else
                         {
                             Console.WriteLine("By Bvin: " + cat.Content.ProductName + " | " + cat.Content.UrlSlug);
-                        }
+                        }*/
 
                         //var productSlug = proxy.CategoriesFindBySlug(snaps.Content[i].RewriteUrl);
                         /*if (productSlug.Errors.Count > 0)
@@ -93,7 +93,7 @@ namespace ApiSample
                 }
             }
 
-            Console.WriteLine("Done - Press a key to continue");
+            Console.WriteLine("Done - Press a key to close this window");
             Console.ReadKey();
         }
     }
