@@ -288,6 +288,7 @@ namespace ApiSample
             Console.ReadKey();*/
 
             Form userInterface = new UserInterface();
+            userInterface.Name = "Készlet ellenőrzés";
             userInterface.ShowDialog();
         }
     }
