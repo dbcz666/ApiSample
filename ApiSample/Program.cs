@@ -28,6 +28,7 @@ using Hotcakes.CommerceDTO.v1.Client;
 using Hotcakes.CommerceDTO.v1;
 using Hotcakes.CommerceDTO.v1.Catalog;
 using System.Windows.Forms;
+using System.IO;
 
 namespace ApiSample
 {
@@ -259,19 +260,26 @@ namespace ApiSample
 
             if (snaps.Content != null)
             {
+
                 Console.WriteLine("Found " + snaps.Content.Count + " products");
                 Console.WriteLine("-- Products --");
-                for (var i = 0; i < snaps.Content.Count; i++)
-                {
-                    if (i < (snaps.Content.Count-1))
+                //C:\Users\dbczr\Desktop\4_félév\Rendszerfejlesztés
+                var file = @"C:\Users\dbczr\Desktop\4_félév\Rendszerfejlesztés\Outputs\myOutput.csv";
+
+                using (var stream = File.CreateText(file))
+                    {
+
+                    for (var i = 0; i < (snaps.Content.Count - 1); i++)
                     {
                         string inventoryId = inventory[i];
                         var inv = proxy2.ProductInventoryFind(inventoryId);
-                        Console.WriteLine(i + ") [" + inv.Content.ProductBvin + "] | Quantity on hand: " + inv.Content.QuantityOnHand + " db");
-                    }
-
-
-            }
+                        string first = inv.Content.ProductBvin.ToString();
+                        string second = inv.Content.QuantityOnHand.ToString();
+                        string csvRow = string.Format("{0};{1}", first, second);
+                        stream.WriteLine(csvRow);
+                            }
+                }
+               
                 
             }
             Console.WriteLine("Done - Press a key to close this window");
