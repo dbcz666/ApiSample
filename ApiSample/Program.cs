@@ -66,22 +66,16 @@ namespace ApiSample
                 {
                     if (i < snaps.Content.Count)
                     {
-                        Console.WriteLine(i + ") " + snaps.Content[i].ProductName + "| bvin: [" + snaps.Content[i].Bvin + "]");
-                        var product = proxy.ProductsFind(snaps.Content[i].Bvin);
-                        if (product.Errors.Count > 0)
-                        {
-                            foreach (var err in product.Errors)
-                            {
-                                Console.WriteLine("ERROR: " + err.Code + " " + err.Description);
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("By Bvin: " + product.Content.ProductName + " | " + product.Content.UrlSlug);
-                        }
+                        Console.WriteLine(i + ") " + snaps.Content[i].ProductName + "| bvin: [" + snaps.Content[i].Bvin + "]"); 
                     }
 
-                        string[] inventory = new string[] { "f1d45ca5-d3dc-409f-bea7-eb1357b3261d",
+                    
+                    }
+                Console.WriteLine("Done - Press a key to close this window");
+                Console.ReadKey();
+            }
+
+            string[] inventory = new string[] { "f1d45ca5-d3dc-409f-bea7-eb1357b3261d",
                             "eb531fea-5c02-43ac-bf09-14f02ff320be",
                             "e2dc9697-2135-4ca6-b833-b65a5510bddf",
                             "222ab345-ad72-4913-b45e-15b6f021b35d",
@@ -262,27 +256,7 @@ namespace ApiSample
                             "3da60b6a-69be-4770-9b5e-6ae42a16d6b7"
                      };
 
-                        var inventoryId = inventory[i];
 
-                        var quantOnHand = proxy.ProductInventoryFind(inventoryId);
-                        //var productSlug = proxy.CategoriesFindBySlug(snaps.Content[i].RewriteUrl);
-                        if (quantOnHand.Errors.Count > 0)
-                        {
-                            foreach (var err in quantOnHand.Errors)
-                            {
-                                Console.WriteLine("ERROR: " + err.Code + " " + err.Description);
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("Quantity on hand " + quantOnHand);
-                        }
-                    }
-                }
-            }
-
-            Console.WriteLine("Done - Press a key to close this window");
-            Console.ReadKey();
             //Form userInterface = new UserInterface();
             //userInterface.ShowDialog();
         }
