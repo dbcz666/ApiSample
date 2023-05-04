@@ -255,7 +255,27 @@ namespace ApiSample
                             "d8795d6d-6ccb-4e2a-ac54-4172897e5d24",
                             "3da60b6a-69be-4770-9b5e-6ae42a16d6b7"
                      };
+            var proxy2 = new Api(url, key);
 
+            if (snaps.Content != null)
+            {
+                Console.WriteLine("Found " + snaps.Content.Count + " products");
+                Console.WriteLine("-- Products --");
+                for (var i = 0; i < snaps.Content.Count; i++)
+                {
+                    if (i < (snaps.Content.Count-1))
+                    {
+                        string inventoryId = inventory[i];
+                        var inv = proxy2.ProductInventoryFind(inventoryId);
+                        Console.WriteLine(i + ") [" + inv.Content.ProductBvin + "] | Quantity on hand: " + inv.Content.QuantityOnHand + " db");
+                    }
+
+
+            }
+                
+            }
+            Console.WriteLine("Done - Press a key to close this window");
+            Console.ReadKey();
 
             //Form userInterface = new UserInterface();
             //userInterface.ShowDialog();
