@@ -38,7 +38,7 @@ namespace ApiSample
         private static void Main(string[] args)
         {
             
-            Console.WriteLine("This is a list of products.");
+            /*Console.WriteLine("This is a list of products.");
             Console.WriteLine();
 
             var url = string.Empty;
@@ -74,9 +74,10 @@ namespace ApiSample
                     }
                 Console.WriteLine("Done - Press a key to close this window");
                 Console.ReadKey();
-            }
+            }*/
 
-            string[] inventory = new string[] { "f1d45ca5-d3dc-409f-bea7-eb1357b3261d",
+
+            /*string[] inventory = new string[] { "f1d45ca5-d3dc-409f-bea7-eb1357b3261d",
                             "eb531fea-5c02-43ac-bf09-14f02ff320be",
                             "e2dc9697-2135-4ca6-b833-b65a5510bddf",
                             "222ab345-ad72-4913-b45e-15b6f021b35d",
@@ -263,11 +264,11 @@ namespace ApiSample
 
                 Console.WriteLine("Found " + snaps.Content.Count + " products");
                 Console.WriteLine("-- Products --");
-                //C:\Users\dbczr\Desktop\4_félév\Rendszerfejlesztés
+                C:\Users\dbczr\Desktop\4_félév\Rendszerfejlesztés
                 var file = @"C:\Users\dbczr\Desktop\4_félév\Rendszerfejlesztés\Outputs\myOutput.csv";
 
                 using (var stream = File.CreateText(file))
-                    {
+                {
 
                     for (var i = 0; i < (snaps.Content.Count - 1); i++)
                     {
@@ -277,16 +278,17 @@ namespace ApiSample
                         string second = inv.Content.QuantityOnHand.ToString();
                         string csvRow = string.Format("{0};{1}", first, second);
                         stream.WriteLine(csvRow);
-                            }
+                    }
                 }
-               
-                
-            }
-            Console.WriteLine("Done - Press a key to close this window");
-            Console.ReadKey();
 
-            //Form userInterface = new UserInterface();
-            //userInterface.ShowDialog();
+
+            }
+
+            Console.WriteLine("Done - Press a key to close this window");
+            Console.ReadKey();*/
+
+            Form userInterface = new UserInterface();
+            userInterface.ShowDialog();
         }
     }
 }
